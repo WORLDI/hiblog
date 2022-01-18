@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>计算属性 vs 方法 | 贺江的博客</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="^ v ^">
+    
+    <link rel="preload" href="/hiblog/assets/css/0.styles.ed44599d.css" as="style"><link rel="preload" href="/hiblog/assets/js/app.9fba46c7.js" as="script"><link rel="preload" href="/hiblog/assets/js/3.79db2d41.js" as="script"><link rel="preload" href="/hiblog/assets/js/1.0cdbce1a.js" as="script"><link rel="preload" href="/hiblog/assets/js/27.9b2b99cc.js" as="script"><link rel="prefetch" href="/hiblog/assets/js/10.2fc8caa2.js"><link rel="prefetch" href="/hiblog/assets/js/11.c5e84471.js"><link rel="prefetch" href="/hiblog/assets/js/12.d8c44b2f.js"><link rel="prefetch" href="/hiblog/assets/js/13.d1fbcc65.js"><link rel="prefetch" href="/hiblog/assets/js/14.feabf3a4.js"><link rel="prefetch" href="/hiblog/assets/js/15.ce3e394e.js"><link rel="prefetch" href="/hiblog/assets/js/16.338d771d.js"><link rel="prefetch" href="/hiblog/assets/js/17.750bf72d.js"><link rel="prefetch" href="/hiblog/assets/js/18.8267f087.js"><link rel="prefetch" href="/hiblog/assets/js/19.fc39e8c4.js"><link rel="prefetch" href="/hiblog/assets/js/20.5db43512.js"><link rel="prefetch" href="/hiblog/assets/js/21.a5e672f1.js"><link rel="prefetch" href="/hiblog/assets/js/22.ff5d0af2.js"><link rel="prefetch" href="/hiblog/assets/js/23.94b21140.js"><link rel="prefetch" href="/hiblog/assets/js/24.4aa787d2.js"><link rel="prefetch" href="/hiblog/assets/js/25.32c2a459.js"><link rel="prefetch" href="/hiblog/assets/js/26.e1d32e7a.js"><link rel="prefetch" href="/hiblog/assets/js/28.db8af083.js"><link rel="prefetch" href="/hiblog/assets/js/29.4a14fce5.js"><link rel="prefetch" href="/hiblog/assets/js/4.459a8e60.js"><link rel="prefetch" href="/hiblog/assets/js/5.72a9989c.js"><link rel="prefetch" href="/hiblog/assets/js/6.d309a550.js"><link rel="prefetch" href="/hiblog/assets/js/7.c8359916.js"><link rel="prefetch" href="/hiblog/assets/js/8.d628bc48.js"><link rel="prefetch" href="/hiblog/assets/js/9.2a3c53c0.js">
+    <link rel="stylesheet" href="/hiblog/assets/css/0.styles.ed44599d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>贺江的博客</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>^ v ^</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/hiblog/" class="home-link router-link-active"><!----> <span class="site-name">贺江的博客</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/hiblog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/WORLDI" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><!----> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>20</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/hiblog/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      链接
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/WORLDI" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><a href="/hiblog/" class="sidebar-heading clickable router-link-active open"><span>JavaScript基础</span> <span class="arrow down"></span></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/hiblog/articles/javascript/VarLetConst.html" class="sidebar-link">var/let/const 的区别</a></li><li><a href="/hiblog/articles/javascript/Scope.html" class="sidebar-link">作用域与作用域链</a></li><li><a href="/hiblog/articles/javascript/Closure.html" class="sidebar-link">闭包</a></li><li><a href="/hiblog/articles/javascript/Functions.html" class="sidebar-link">手写原生方法</a></li><li><a href="/hiblog/articles/javascript/Script_Tag.html" class="sidebar-link">script标签相关</a></li><li><a href="/hiblog/articles/javascript/FunctionAndClass.html" class="sidebar-link">es5的function和es6的class的区别</a></li><li><a href="/hiblog/articles/javascript/StrictModel.html" class="sidebar-link">严格模式与非严格模式的区别</a></li><li><a href="/hiblog/articles/javascript/PrototypeChain.html" class="sidebar-link">原型与原型链</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/hiblog/articles/css/Css" class="sidebar-heading clickable"><span>CSS</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/hiblog/articles/react/FunctionAndClass" class="sidebar-heading clickable"><span>React</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/hiblog/articles/design_model/Observer" class="sidebar-heading clickable"><span>设计模式</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/hiblog/articles/apollo/ApolloAndGraphQL" class="sidebar-heading clickable"><span>Apollo与GraphQL</span> <span class="arrow right"></span></a> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><a href="/hiblog/diary/ReStart" class="sidebar-heading clickable"><span>碎碎念</span> <span class="arrow right"></span></a> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>计算属性 vs 方法</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page" style="padding-right:0;"><section><div class="page-title"><h1 class="title">计算属性 vs 方法</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>Jiang</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2022/1/14</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><hr> <h1 id="计算属性-vs-方法"><a href="#计算属性-vs-方法" class="header-anchor">#</a> 计算属性 vs 方法</h1> <p>举个🌰，我们想要从下面的数据中筛选出成年的用户进行渲染：</p> <div class="language- extra-class"><pre class="language-text"><code>new Vue({
+    data: {
+        users: [
+            {name: 'a', age: 18},
+            {name: 'b', age: 12},
+            {name: 'c', age: 30}
+        ]
+    }
+})
+</code></pre></div><p>一般有下面这几种方式：</p> <ol><li><code>v-for</code> + <code>v-if</code></li></ol> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul&gt;
+    &lt;li
+        v-for=&quot;user in users&quot;
+        v-bind:key=&quot;user.name&quot;
+        v-if=&quot;user.age &gt;= 18&quot;
+    &gt;{{user.name}}&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></div><p>这样写有点小问题，就是数据源里有多少条数据，模板就会遍历多少次，我们应该给模版仅仅想让它渲染的数据。</p> <ol start="2"><li>使用computed计算属性</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul&gt;
+    &lt;li
+        v-for=&quot;user in filteredUser&quot;
+        v-bind:key=&quot;user.name&quot;
+        v-if=&quot;user.age &gt;= 18&quot;
+    &gt;{{user.name}}&lt;/li&gt;
+&lt;/ul&gt;
+
+new Vue({
+    data: {
+        users: [
+            {name: 'a', age: 18},
+            {name: 'b', age: 12},
+            {name: 'c', age: 30}
+        ]
+    },
+    computed: {
+        filteredUser: function() {        // 这个方法就相当于filteredUser的getter方法
+            return this.users.filter(user =&gt; user.age &gt;= 18);
+        }
+    }
+})
+</code></pre></div><p>这样一来模板拿到的就是过滤后的users了，并且filteredUser是响应式依赖于this.users的，只要this.users一改变，filteredUser也会跟着改变，相当于React中useMemo的效果。</p> <ol start="3"><li>使用方法</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&lt;ul&gt;
+    &lt;li
+        v-for=&quot;user in filteredUser()&quot;
+        v-bind:key=&quot;user.name&quot;
+        v-if=&quot;user.age &gt;= 18&quot;
+    &gt;{{user.name}}&lt;/li&gt;
+&lt;/ul&gt;
+
+new Vue({
+    data: {
+        users: [
+            {name: 'a', age: 18},
+            {name: 'b', age: 12},
+            {name: 'c', age: 30}
+        ]
+    },
+    methods: {
+            filteredUser: function() {
+                return this.users.filter(user =&gt; user.age &gt;= 18);
+        }
+    },
+})
+</code></pre></div><p>从表现来看，使用computed和方法的最终结果是一样的。然而，不同的是<strong>计算属性是基于它们的响应式依赖进行缓存的</strong>。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 this.users 还没有发生改变，多次访问 filteredUser 计算属性会立即返回之前的计算结果，而不必再次执行函数。</p> <p><strong>为什么需要缓存？</strong>
+假设我们有一个性能开销比较大的计算属性 A，它需要遍历一个巨大的数组并做大量的计算。然后我们可能有其他的计算属性依赖于 A。如果没有缓存，我们将不可避免的多次执行 A 的 getter！如果你不希望有缓存，请用方法来替代。</p> <h2 id="watch"><a href="#watch" class="header-anchor">#</a> watch</h2> <div class="language- extra-class"><pre class="language-text"><code>new Vue({
+    el: '#app',
+    data: {
+        input: '',
+        result: []
+    },
+    watch: {           
+        input: function(newInput, oldInput) {        // 如果this.input发生变化，这个方法就会执行
+            this.getData();
+        }
+    },
+    created: function() {
+        this.getData = debounce(this.getResult, 500);
+    },
+    methods: {
+        getResult: function() {
+            axios({
+                method: 'POST',
+                url: 'xxx',
+                data: {
+                    input,
+                }
+            }).then(res =&gt; {
+                this.result = [...res];
+            })
+        }
+    }
+})
+</code></pre></div><p>按照我的理解来说，<code>computed</code>计算属性相当于React中的<code>useMemo</code>，<code>watch</code>属性相当于React中的<code>useEffect</code>。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-cb1513f6></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/hiblog/assets/js/app.9fba46c7.js" defer></script><script src="/hiblog/assets/js/3.79db2d41.js" defer></script><script src="/hiblog/assets/js/1.0cdbce1a.js" defer></script><script src="/hiblog/assets/js/27.9b2b99cc.js" defer></script>
+  </body>
+</html>
